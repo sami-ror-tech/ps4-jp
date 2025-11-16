@@ -1,0 +1,145 @@
+html, body{
+margin:auto;
+font-family:sans-serif;
+font-size:20px;
+font-weight:lighter;
+text-align:left;
+color:#E0E0E0; /* لون النص الجديد - رمادي فاتح */
+background-image: url('ros.gif'); /* إضافة صورة الخلفية */
+background-color: #1A1226; /* لون الخلفية الجديد - بنفسجي داكن */
+background-size:cover;
+}
+button {
+            
+            border: 2px solid #00FFAA; /* لون حدود الزر الجديد - تركوازي */
+            border-radius: 10px;
+			width: 250px;
+            height: 45px;            
+            text-align: center;
+            padding: 1px;
+            margin: 1px;
+            box-shadow: 0 5px 20px 0 #00FFAA; /* لون الظل الجديد - تركوازي */
+            background:rgba(26,18,38,0.5); /* خلفية شبه شفافة */
+}
+button:hover {
+            box-shadow: 0 5px 50px 0 #00FFAA; /* لون الظل عند التمرير - تركوازي */
+            color: #00FFAA; /* لون النص عند التمرير - تركوازي */
+            border-radius: 10px;
+            background-color: rgba(0,255,170,0.2); /* خلفية شبه شفافة عند التمرير */
+}
+header {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: rgba(26, 18, 38, 0.5);
+  z-index: 1000;
+  box-shadow: none;
+  padding: 0 10px;
+  margin: 0;
+}
+.header-center {
+    text-align: center;
+    width: 100%;
+	
+}
+#clock{
+ margin-right:2.25%;
+ margin-top: 0px;
+ font-weight:bold;
+ font-size:25px;
+}
+#date {
+ margin-left:4%;
+ font-weight:bold;
+ margin-top: 5px;
+ font-size:25px;
+}
+#donate2{
+ float:right;
+ margin-right:2.25%;
+ margin-top: 0px;
+ font-weight:bold;
+ font-size:28px;
+  color: #E0E0E0; /* لون النص الجديد - رمادي فاتح */
+}
+#donate {
+ float:left;
+ margin-left:1.60%;
+ font-weight:bold;
+ margin-top: 0px;
+ font-size:28px;
+ color: #E0E0E0; /* لون النص الجديد - رمادي فاتح */
+}
+.msgs {
+position:absolute; left:0; right:0; top:0; bottom:0; margin:auto; max-width:100%; max-height:100%;
+width:900;
+height:30;
+top:0;
+bottom:100;
+font-size:32px;
+text-align:center;
+color: #FFFFFF; /* لون النص الجديد - أبيض */
+text-shadow: 4px 4px 4px black;
+}
+header div{
+	height: 100%;
+	display: ruby-text;
+	margin-top: -1.5em;
+}
+.pointer {cursor: pointer;}
+.yellow {
+  color:#FFFFFF; /* لون النص الجديد - أبيض */
+ }
+ .hue {
+  color:#E0E0E0; /* لون النص الجديد - رمادي فاتح */
+  padding:10px;
+  border-radius:10px;
+  animation:hue 5s linear infinite;
+  -webkit-animation: hue 5s linear infinite;
+  box-shadow: 0px 0px 50px #00FFAA; /* لون الظل الجديد - تركوازي */
+  color:#E0E0E0;
+  background:rgba(26,18,38,0.5);
+}
+.score-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #E0E0E0;
+}
+
+.Pass {
+    color: #00FFAA;
+    text-shadow: 0 0 5px #00FFAA, 0 0 10px #00FFAA, 0 0 20px #00FFAA;
+    font-weight: bold;
+}
+
+.Fail {
+    color: #FF0000;
+    text-shadow: 0 0 5px #FF0000, 0 0 10px #FF0000, 0 0 20px #FF0000;
+    font-weight: bold;
+}
+
+.golden-text {
+    color: gold;
+}
+
+/* رسائل */
+#msgs2 {
+    font-size: 18px;
+    text-shadow: 4px 4px 4px black;
+    color: white;
+    text-align: center;
+}
+.neon-text {
+    color: #00BFFF; /* لون أزرق نيون جديد */
+    text-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF, 0 0 20px #00BFFF; /* تأثير توهج نيون أزرق */
+}
