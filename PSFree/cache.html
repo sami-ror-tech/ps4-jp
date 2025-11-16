@@ -1,0 +1,178 @@
+<!-- Copyright (C) 2023-2025 anonymous
+
+This file is part of PSFree.
+
+PSFree is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+PSFree is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<html manifest="psfree_lapse.cache">
+    <head>
+        <meta charset='utf-8'>
+        <title>PSFree-Lapse Exploit For PS4 9.00</title>
+        <style>
+          :root{
+            --bg-dark-1:#0b1220;
+            --bg-dark-2:#101827;
+            --glass-bg:rgba(255,255,255,.08);
+            --glass-brd:rgba(255,255,255,.18);
+            --txt:#e5e7eb;
+            --muted:#9ca3af;
+            --accent:#60a5fa;
+          }
+
+          @font-face {
+              font-family: 'logging';
+              src: url('fonts/LiberationMono-Regular.ttf');
+          }
+
+          *{box-sizing:border-box}
+          html,body{height:100%}
+
+          body{
+              background-image:url("bg.jpg"), radial-gradient(1200px 800px at 50% 45%, rgba(96,165,250,.15), rgba(96,165,250,0) 60%), linear-gradient(160deg,var(--bg-dark-1), var(--bg-dark-2));
+              background-repeat:no-repeat, no-repeat, no-repeat;
+              background-size:70%, 100% 100%, 100% 100%;
+              background-position:center, center, center;
+              background-color:var(--bg-dark-2);
+              color:var(--txt);
+              font-size:20px;
+              text-align:center;
+              margin:0;
+              overflow:hidden;
+              font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Helvetica, Arial;
+              display:grid;
+              place-items:center;
+          }
+
+          body::after{
+            content:"";
+            position:fixed; inset:0;
+            background-image: linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(80% 80% at 50% 50%, black 60%, transparent);
+            pointer-events:none;
+          }
+
+          .info{
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: min(92vw, 560px);
+            padding: 28px 28px 28px 76px;
+            border-radius: 20px;
+            background: var(--glass-bg);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-brd);
+            box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+            color: var(--txt);
+            font-size: 24px;
+            line-height: 1.4;
+            text-shadow: 0 1px 0 rgba(0,0,0,.25);
+            letter-spacing:.2px;
+          }
+
+          #msgs{
+            -webkit-font-feature-settings:"tnum";
+            font-feature-settings:"tnum";
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+          }
+
+          .info::before{
+            content:"";
+            position:absolute; left:24px; top:50%; transform:translateY(-50%);
+            width:36px; height:36px; border-radius:50%;
+            border:3px solid rgba(255,255,255,.25);
+            border-top-color: var(--accent);
+            animation: spin 1s linear infinite;
+          }
+
+          .info::after{
+            content: "";
+            position:absolute; inset:-2px; border-radius: inherit;
+            pointer-events:none;
+            box-shadow: 0 0 0 1px rgba(96,165,250,.18), 0 0 40px 10px rgba(96,165,250,.08) inset;
+          }
+
+          #msgs span, #msgs{
+            background: linear-gradient(90deg, var(--txt), var(--accent), var(--txt));
+            -webkit-background-clip:text; background-clip:text; color:transparent;
+            background-size: 200% 100%;
+            animation: sheen 3.5s ease-in-out infinite;
+          }
+
+          #loadingText {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 0 0 8px rgba(96,165,250,.7);
+            animation: sheen 3.5s ease-in-out infinite;
+            z-index: 9999;
+          }
+
+          #noteText {
+            position: fixed;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 22px;
+            font-weight: bold;
+            color: #60fa60; /* greenish to show improvement/fix */
+            text-shadow: 0 0 6px rgba(96,250,96,.6);
+            z-index: 9999;
+          }
+
+          body::before{
+            content:"PSFree-Lapse | PS4 9.00";
+            position: fixed; left:20px; bottom:16px; font-size:12px; color:var(--muted); letter-spacing:.4px; opacity:.85;
+          }
+
+          /* إصلاح دوران الدائرة فقط */
+          @keyframes spin { 
+              from { transform: translateY(-50%) rotate(0deg); } 
+              to { transform: translateY(-50%) rotate(360deg); } 
+          }
+
+          @keyframes sheen { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
+
+          @media (max-width: 480px){
+            .info{ min-width: 86vw; padding:22px 22px 22px 66px; font-size:20px }
+            .info::before{ width:30px; height:30px; left:18px }
+            #loadingText{font-size:30px; top:15px}
+            #noteText{font-size:18px; bottom:40px}
+          }
+        </style>
+        <script>
+          history.replaceState(null,null,'index.html');var histlength=history.length;history.go(-histlength);
+          function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));msgs.innerHTML="Installing Offline Cache ... " + Percent + "%"};
+          function DisplayCacheProgress(){
+            setTimeout(function(){msgs.innerHTML="Cache Installed Successfully";},2000);
+            setTimeout(function(){location.reload();},3000);
+          }
+          window.applicationCache.addEventListener("progress",DLProgress,false);
+          window.applicationCache.oncached=function(e){DisplayCacheProgress();};
+          window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+        </script>
+    </head>
+    <body style=overflow:hidden>
+      <div id="loadingText">Please Wait ..</div>
+      <div id="noteText">Temp AIO Payload Fix by ABC - Improvements Applied</div>
+      <div id=msgs class=info style='-webkit-font-feature-settings:"tnum";font-feature-settings:"tnum";'></div>
+    </body>
+</html>

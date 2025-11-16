@@ -1,0 +1,113 @@
+<html manifest="cache.manifest">
+<head>
+    <title>OFFLINE CACHE 9.00</title>
+    <script>history.replaceState(null,null,'index.html');</script>
+    <style>
+        body {
+            background-image: url("ros.gif");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #FFD700; /* ذهبي نيون متناسق مع الصفحة الرئيسية */
+            text-align: center;
+            margin: 0px;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            text-shadow: 0 0 5px #FFD700,
+                         0 0 10px #FFD700,
+                         0 0 20px #FFA500,
+                         0 0 40px #FFA500;
+        }
+
+#myProgress {
+    border: 3px solid #FFD700; /* إطار ذهبي رفيع */
+    border-radius: 25px;
+    background-color: rgba(0,0,0,0.2); /* خلفية شبه شفافة */
+    height: 45px;
+    width: 50%;
+    position: absolute;
+    top: 65%; /* أسفل منتصف الصفحة */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    box-shadow: 0 0 20px #FFD700; /* توهج خارجي للشريط */
+}
+
+#myBar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+    text-align: center;
+    line-height: 45px;
+    color: #1b1b2e; /* نص داكن لتباين مع الذهبي */
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 25px;
+    box-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500; /* توهج داخلي */
+    animation: shine 2s linear infinite; /* حركة لمعان */
+}
+
+/* تأثير لمعان متحرك داخل الشريط */
+@keyframes shine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+#myBar {
+    background-size: 200% 100%;
+}
+
+
+
+
+        h1.titlehead {
+            margin-top: 20px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="progress" class="titlehead">Loading.. Please Wait ..</h1>
+    <div id="myProgress">
+        <div id="myBar">0%</div>
+    </div>
+
+    <script>
+        if(window.applicationCache.status==2){localStorage.is755BCached=true;}
+        window.applicationCache.ondownloading=function(){
+            document.getElementById("progress").innerHTML="Page Caching Started!!";
+            localStorage.is755BCached=false;
+        };
+        window.applicationCache.onprogress=function(a){
+            document.getElementById("myBar").style.width=(Math.round(100*(a.loaded/a.total)))+"%";
+            document.getElementById("myBar").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";
+        };
+        window.applicationCache.oncached=function(){
+            document.getElementById("progress").innerHTML="Page Cached Successfully!!";
+            localStorage.is755BCached=true;
+            setTimeout(function(){window.location.reload("myBar"); }, 1500);
+        };
+        window.applicationCache.onupdateready=function(){
+            document.getElementById("progress").innerHTML="Update Cache Successfully!!";
+            localStorage.is755BCached=true;
+            setTimeout(function(){window.location.reload("myBar"); }, 1500);
+        };
+        window.applicationCache.onnoupdate=function(){window.location.replace("index.html");};
+        window.applicationCache.onerror=function(){window.location.replace("index.html");};
+
+        var width = 0;
+        function frame1() {
+            var elem = document.getElementById("myBar");
+            var i=0;
+            var id = setInterval(fra, 10);
+            function fra(){
+                if(i<10 && width<100){
+                    width++;
+                    elem.style.width = width + "%";
+                    elem.innerHTML = width  + "%";
+                } i++;
+            }
+        }
+    </script>
+</body>
+</html>
